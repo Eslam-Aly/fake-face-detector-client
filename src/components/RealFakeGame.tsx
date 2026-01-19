@@ -1,4 +1,3 @@
-import React from "react";
 import fakeImg from "../assets/fake.jpg";
 import realImg from "../assets/real.jpg";
 

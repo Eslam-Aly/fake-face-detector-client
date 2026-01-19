@@ -1,5 +1,3 @@
-import React from "react";
-
 import heroImg from "../assets/backgroundHero.jpg";
 
 function Main() {

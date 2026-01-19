@@ -1,4 +1,3 @@
-import React from "react";
 import { CgSoftwareUpload } from "react-icons/cg";
 
 function DeepFakeDetector() {

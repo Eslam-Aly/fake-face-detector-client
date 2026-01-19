@@ -1,4 +1,3 @@
-import React from "react";
 import fakeFaceImage from "../assets/fake-face-detector-high-resolution-logo-transparent-2.png";
 
 function Header() {
