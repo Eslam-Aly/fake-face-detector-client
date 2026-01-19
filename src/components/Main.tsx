@@ -1,13 +1,12 @@
 import React from "react";
-import fakeFaceImage from "../assets/fake-face-detector-high-resolution-logo-transparent.png";
-import heroImg from "../assets/heroCard.jpg";
-import bg from "../assets/background.jpg";
+
+import heroImg from "../assets/backgroundHero.jpg";
 
 function Main() {
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat w-full"
-      style={{ backgroundImage: `url(${bg})` }}
+      style={{ backgroundImage: `url(${heroImg})` }}
     >
       <div className="container mx-auto h-screen flex flex-row justify-between items-center">
         <div className="w-2/3 flex flex-col space-y-6 justify-center items-start">
@@ -25,16 +24,14 @@ function Main() {
               Built with React + TypeScript + Xception
             </p>
           </div>
-          <button className="mt-2 px-4 py-2 bg-slate-800 text-slate-100 rounded-md w-32 h-12 hover:bg-slate-700 cursor-pointer  hover:scale-105 transition-all">
-            Try it now
-          </button>
-        </div>
-        <div className="flex justify-center lg:justify-end">
-          <img
-            src={heroImg}
-            alt="Hero"
-            className="w-140 h-auto object-contain"
-          />
+          <div className="flex flex-row space-x-4">
+            <button className="mt-2 px-4 py-2 bg-slate-800 text-slate-100 rounded-md w-32 h-12 hover:bg-slate-700 cursor-pointer  hover:scale-105 transition-all ">
+              Try it now
+            </button>
+            <button className="mt-2 px-4 py-2 bg-slate-100 text-slate-800 rounded-md w-32 h-12 hover:bg-slate-300 cursor-pointer  hover:scale-105 transition-all border border-slate-800">
+              How it works
+            </button>
+          </div>
         </div>
       </div>
     </div>

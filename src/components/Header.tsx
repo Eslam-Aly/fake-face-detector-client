@@ -3,7 +3,7 @@ import fakeFaceImage from "../assets/fake-face-detector-high-resolution-logo-tra
 
 function Header() {
   return (
-    <div className="flex justify-between px-12 bg-slate-800 text-white h-24 fixed w-full">
+    <div className="flex justify-between px-12 bg-slate-800 text-white h-20 fixed w-full">
       <ul className="flex items-center">
         <a href="#">
           <img
