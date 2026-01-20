@@ -6,7 +6,7 @@ function Header() {
       <ul className="flex items-center">
         <a href="#">
           <img
-            className=" h-16 rounded-sm "
+            className=" h-14 rounded-sm "
             src={fakeFaceImage}
             alt="Fake Face Detector Logo"
           />

@@ -4,7 +4,7 @@ function DeepFakeDetector() {
   return (
     <div className="p-8 min-h-screen bg-[#FBF9FE] ">
       <div className="flex flex-col justify-center items-center mb-12 space-y-6">
-        <h1 className="text-4xl text-[#314473]">Deepfake Detector</h1>
+        <h2 className="text-4xl font-bold text-[#314473]">Deepfake Detector</h2>
         <p className="text-lg text-[#314473]">
           Upload a face image and get a REAL/FAKE prediction with confidence.
         </p>

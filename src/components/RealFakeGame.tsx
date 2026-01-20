@@ -14,10 +14,10 @@ function RealFakeGame() {
           </p>
         </div>
         <div className="flex flex-row justify-center items-center space-x-8">
-          <div className="border-4 border-slate-800 w-1/2 rounded-lg shadow-lg  h-full flex flex-col justify-center items-center">
+          <div className="border-4 border-slate-800 w-140 rounded-lg shadow-lg  h-full flex flex-col justify-center items-center">
             <img src={fakeImg} alt="Fake" className="w-full" />
           </div>
-          <div className="border-4 border-slate-800 w-1/2 rounded-lg shadow-lg  h-full flex flex-col justify-center items-center">
+          <div className="border-4 border-slate-800 w-140 rounded-lg shadow-lg  h-full flex flex-col justify-center items-center">
             <img src={realImg} alt="Real" className="w-full" />
           </div>
         </div>
