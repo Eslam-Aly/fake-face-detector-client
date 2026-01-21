@@ -7,14 +7,14 @@ function Main() {
         className="min-h-screen bg-cover bg-center bg-no-repeat w-full"
         style={{ backgroundImage: `url(${heroImg})` }}
       >
-        <div className="container mx-auto h-screen flex flex-row justify-between items-center">
-          <div className="w-2/3 flex flex-col space-y-6 justify-center items-start">
+        <div className="container mx-auto h-screen flex flex-row justify-between items-center relative z-10">
+          <div className="w-2/3 flex flex-col space-y-6 justify-center items-start ">
             <div>
-              <h1 className="text-6xl font-bold text-[#314473]">
+              <h1 className="text-6xl font-bold text-[#314473] leading-tight">
                 Fake Face Detector <br />
               </h1>
               <p className="text-3xl font-semibold text-[#314473]">
-                (Deepfake Check)
+                Deepfake Check
               </p>
             </div>
             <div className="flex flex-col space-y-2">
@@ -25,6 +25,13 @@ function Main() {
                 Built with React + TypeScript + Xception
               </p>
             </div>
+
+            <ul className="text-[#314473] list-disc list-inside text-lg">
+              <li>Xception + transfer learning</li>
+              <li>Confidence score</li>
+              <li>No storage (privacy-first)</li>
+            </ul>
+
             <div className="flex flex-row space-x-4">
               <button className="mt-2 px-4 py-2 bg-[#314473] text-[#EBEEF7] rounded-md w-32 h-12 hover:bg-[#768DD2] cursor-pointer  hover:scale-105 transition-all ">
                 Try it now
