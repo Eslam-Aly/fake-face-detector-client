@@ -57,25 +57,27 @@ function DeepFakeDetector() {
   };
 
   return (
-    <div className="p-8 min-h-screen bg-[#FBF9FE]">
+    <div className="min-h-screen bg-[#FBF9FE] px-4 py-10 sm:px-6 md:px-8">
       {/* Title */}
-      <div className="flex flex-col items-center mb-12 space-y-4">
-        <h2 className="text-4xl font-bold text-[#314473]">Deepfake Detector</h2>
-        <p className="text-lg text-[#314473]">
+      <div className="flex flex-col items-center mb-10 md:mb-12 space-y-3 md:space-y-4 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#314473]">
+          Deepfake Detector
+        </h2>
+        <p className="text-base sm:text-lg text-[#314473]">
           Upload a face image and get a REAL/FAKE prediction with confidence.
         </p>
       </div>
 
       {/* Cards */}
-      <div className="flex flex-row justify-center gap-8">
+      <div className="mx-auto flex flex-col lg:flex-row justify-center gap-6 sm:gap-8 max-w-6xl">
         {/* Upload Card */}
-        <div className="w-1/2 rounded-2xl border border-slate-200 shadow-lg p-6">
+        <div className="w-full lg:w-1/2 rounded-2xl border border-slate-200 shadow-lg p-5 sm:p-6">
           <h3 className="text-xl font-semibold text-[#314473] mb-4">
             Upload Image
           </h3>
 
           {!previewUrl ? (
-            <label className="border-2 border-dashed bg-slate-100 h-64 flex flex-col justify-center items-center cursor-pointer hover:bg-[#E6F2FF] transition rounded-xl">
+            <label className="border-2 border-dashed bg-slate-100 h-56 sm:h-64 flex flex-col justify-center items-center cursor-pointer hover:bg-[#E6F2FF] transition rounded-xl">
               <CgSoftwareUpload size={36} className="text-[#314473] mb-2" />
               <p className="text-[#314473] text-center">
                 Click to upload
@@ -90,7 +92,7 @@ function DeepFakeDetector() {
               />
             </label>
           ) : (
-            <div className="relative h-64 flex justify-center items-center bg-slate-100 rounded-xl">
+            <div className="relative h-56 sm:h-64 flex justify-center items-center bg-slate-100 rounded-xl">
               <img
                 src={previewUrl}
                 alt="preview"
@@ -106,7 +108,7 @@ function DeepFakeDetector() {
           )}
 
           {/* Actions */}
-          <div className="flex gap-4 mt-6">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6">
             <button
               onClick={handleDetect}
               disabled={!file || result.status === "loading"}
@@ -129,7 +131,7 @@ function DeepFakeDetector() {
         </div>
 
         {/* Results Card */}
-        <div className="w-1/2 rounded-2xl border border-slate-200 shadow-lg p-6 flex flex-col justify-center items-center text-center">
+        <div className="w-full lg:w-1/2 rounded-2xl border border-slate-200 shadow-lg p-5 sm:p-6 flex flex-col justify-center items-center text-center">
           <h3 className="text-xl font-semibold text-[#314473] mb-6">Results</h3>
 
           {result.status === "idle" && (
@@ -160,7 +162,7 @@ function DeepFakeDetector() {
                 Confidence: <strong>{result.confidence}%</strong>
               </p>
 
-              <div className="w-full bg-slate-200 rounded-full h-3 mb-6">
+              <div className="w-full max-w-md bg-slate-200 rounded-full h-3 mb-6">
                 <div
                   className={`h-3 rounded-full ${
                     result.label === "REAL" ? "bg-green-600" : "bg-red-600"

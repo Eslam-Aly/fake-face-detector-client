@@ -2,41 +2,49 @@ import heroImg from "../assets/backgroundHero.jpg";
 
 function Main() {
   return (
-    <section className=" bg-slate-50">
+    <section className="bg-slate-50">
       <div
-        className="min-h-screen bg-cover bg-center bg-no-repeat w-full"
+        className="relative min-h-screen w-full bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImg})` }}
       >
-        <div className="container mx-auto h-screen flex flex-row justify-between items-center relative z-10">
-          <div className="w-2/3 flex flex-col space-y-6 justify-center items-start ">
-            <div>
-              <h1 className="text-6xl font-bold text-[#314473] leading-tight">
-                Fake Face Detector <br />
+        {/* Readability overlay */}
+        <div className="absolute inset-0 bg-linear-to-l from-black/20 to-[#FBF9FE] backdrop-blur-lg" />
+
+        <div className="relative z-10 container mx-auto min-h-screen px-4 sm:px-6 md:px-8 flex items-center">
+          <div className="w-full max-w-2xl flex flex-col space-y-6 sm:space-y-7">
+            {/* Title */}
+            <div className="space-y-2">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#314473] leading-tight">
+                Fake Face Detector
               </h1>
-              <p className="text-3xl font-semibold text-[#314473]">
+              <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-[#314473]">
                 Deepfake Check
               </p>
             </div>
+
+            {/* Subtitle */}
             <div className="flex flex-col space-y-2">
-              <p className="text-xl text-[#314473]">
-                Upload an image and get a prediction with confidence score.
+              <p className="text-base sm:text-lg text-[#314473]">
+                Upload an image and get a prediction with a confidence score.
               </p>
-              <p className="text-sm text-[#314473]">
+              <p className="text-sm text-[#314473]/80">
                 Built with React + TypeScript + Xception
               </p>
             </div>
 
-            <ul className="text-[#314473] list-disc list-inside text-lg">
+            {/* Bullets */}
+            <ul className="text-[#314473] list-disc list-inside text-base sm:text-lg space-y-1">
               <li>Xception + transfer learning</li>
               <li>Confidence score</li>
               <li>No storage (privacy-first)</li>
             </ul>
 
-            <div className="flex flex-row space-x-4">
-              <button className="mt-2 px-4 py-2 bg-[#314473] text-[#EBEEF7] rounded-md w-32 h-12 hover:bg-[#768DD2] cursor-pointer  hover:scale-105 transition-all ">
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <button className="w-full sm:w-auto px-5 py-3 bg-[#314473] text-[#EBEEF7] rounded-md hover:bg-[#25365E] hover:scale-[1.02] transition-all">
                 Try it now
               </button>
-              <button className="mt-2 px-4 py-2 bg-[#EBEEF7] text-[#314473] rounded-md w-32 h-12 hover:bg-slate-100 cursor-pointer  hover:scale-105 transition-all border border-[#314473]">
+              <button className="w-full sm:w-auto px-5 py-3 bg-[#EBEEF7] text-[#314473] rounded-md hover:bg-slate-100 hover:scale-[1.02] transition-all border border-[#314473]">
                 How it works
               </button>
             </div>
