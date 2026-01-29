@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import fakeFaceImage from "../assets/fake-face-detector-high-resolution-logo-grayscale-transparent.png";
 
 function Footer() {
@@ -23,30 +24,43 @@ function Footer() {
           {/* Project */}
           <div className="flex flex-col space-y-2">
             <h4 className="font-semibold text-lg">Project</h4>
-            <a href="#home" className="hover:text-blue-600">
+            <Link to="/" className="hover:text-blue-600">
               Home
-            </a>
-            <a href="#detector" className="hover:text-blue-600">
-              Fake Face Detector
-            </a>
-            <a href="#game" className="hover:text-blue-600">
-              Guess Game (experimental)
-            </a>
-            <a href="#about" className="hover:text-blue-600">
+            </Link>
+
+            <Link to="/pages/about" className="hover:text-blue-600">
               About
-            </a>
+            </Link>
+            <Link to="/pages/contact" className="hover:text-blue-600">
+              Contact
+            </Link>
           </div>
 
           {/* Resources */}
           <div className="flex flex-col space-y-2">
             <h4 className="font-semibold text-lg">Resources</h4>
-            <a href="#" className="hover:text-blue-600">
+            <a
+              href="https://sciforum.net/paper/view/27925"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600"
+            >
               Research Paper
             </a>
-            <a href="#" className="hover:text-blue-600">
+            <a
+              href="https://github.com/Eslam-Aly/fake-face-detector-client.git"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600"
+            >
               GitHub (Client)
             </a>
-            <a href="#" className="hover:text-blue-600">
+            <a
+              href="https://github.com/Eslam-Aly/fake-face-detection.git"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600"
+            >
               GitHub (API)
             </a>
           </div>
@@ -71,7 +85,12 @@ function Footer() {
             >
               Portfolio: eslamaly.com
             </a>
-            <a href="#" className="hover:text-blue-600">
+            <a
+              href="https://www.linkedin.com/in/eslam-aly-88b66ab8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600"
+            >
               LinkedIn
             </a>
           </div>

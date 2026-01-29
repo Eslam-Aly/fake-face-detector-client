@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import fakeFaceImage from "../assets/fake-face-detector-high-resolution-logo-transparent-2.png";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,8 +21,8 @@ function Header() {
     <header className="fixed top-0 w-full z-50 bg-[#314473] shadow-md">
       <div className="container mx-auto flex items-center justify-between py-3 px-4 sm:px-6 text-[#EBEEF7]">
         {/* Logo */}
-        <a
-          href="#home"
+        <Link
+          to="/"
           className="flex items-center gap-2"
           onClick={closeMenu}
           aria-label="Go to Home"
@@ -31,28 +32,28 @@ function Header() {
             src={fakeFaceImage}
             alt="Fake Face Detector Logo"
           />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center space-x-6 text-base lg:text-lg font-medium">
-          <a
-            href="#home"
+          <Link
+            to="/"
             className="hover:text-blue-400 hover:scale-105 transition-all duration-200"
           >
             Home
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            to="/pages/about"
             className="hover:text-blue-400 hover:scale-105 transition-all duration-200"
           >
             About
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            to="/pages/contact"
             className="hover:text-blue-400 hover:scale-105 transition-all duration-200"
           >
             Contact
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile menu button */}
@@ -76,27 +77,27 @@ function Header() {
         }`}
       >
         <nav className="container mx-auto flex flex-col px-4 sm:px-6 py-3 text-base font-medium justify-center items-center space-y-2 text-[#EBEEF7]">
-          <a
-            href="#home"
+          <Link
+            to="/"
             onClick={closeMenu}
             className="py-2 hover:text-blue-400 transition"
           >
             Home
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            to="/pages/about"
             onClick={closeMenu}
             className="py-2 hover:text-blue-400 transition"
           >
             About
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            to="/pages/contact"
             onClick={closeMenu}
             className="py-2 hover:text-blue-400 transition"
           >
             Contact
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
