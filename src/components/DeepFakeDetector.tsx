@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CgSoftwareUpload } from "react-icons/cg";
 import { FiTrash2 } from "react-icons/fi";
+import { detectFakeFace } from "../lib/api";
 
 type ResultState =
   | { status: "idle" }
   | { status: "loading" }
-  | { status: "success"; label: "REAL" | "FAKE"; confidence: number }
+  | {
+      status: "success";
+      label: "REAL" | "FAKE";
+      confidence: number;
+      probabilityReal: number;
+    }
   | { status: "error"; message: string };
 
 function DeepFakeDetector() {
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [result, setResult] = useState<ResultState>({ status: "idle" });
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   const handleFileChange = (f: File | null) => {
     if (!f) return;
@@ -29,12 +43,19 @@ function DeepFakeDetector() {
       return;
     }
 
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
+
     setFile(f);
     setPreviewUrl(URL.createObjectURL(f));
     setResult({ status: "idle" });
   };
 
   const removeFile = () => {
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
     setFile(null);
     setPreviewUrl(null);
     setResult({ status: "idle" });
@@ -45,15 +66,21 @@ function DeepFakeDetector() {
 
     setResult({ status: "loading" });
 
-    // TODO: replace with real API call
-    await new Promise((r) => setTimeout(r, 1200));
-
-    const isReal = Math.random() > 0.5;
-    setResult({
-      status: "success",
-      label: isReal ? "REAL" : "FAKE",
-      confidence: Math.floor(75 + Math.random() * 20),
-    });
+    try {
+      const prediction = await detectFakeFace(file);
+      setResult({
+        status: "success",
+        label: prediction.label,
+        confidence: prediction.confidence,
+        probabilityReal: prediction.probability_real,
+      });
+    } catch (error) {
+      setResult({
+        status: "error",
+        message:
+          error instanceof Error ? error.message : "Unexpected error occurred.",
+      });
+    }
   };
 
   return (
@@ -163,6 +190,9 @@ function DeepFakeDetector() {
 
               <p className="text-lg mb-2">
                 Confidence: <strong>{result.confidence}%</strong>
+              </p>
+              <p className="text-sm text-slate-600 mb-2">
+                Probability real: <strong>{result.probabilityReal}%</strong>
               </p>
 
               <div className="w-full max-w-md bg-slate-200 rounded-full h-3 mb-6">
