@@ -2,6 +2,12 @@
 
 React + Vite frontend for uploading an image and calling the detection API.
 
+## Research basis
+
+This project is part of, and based on, the research paper published on Sciforum:
+
+- https://sciforum.net/paper/view/27925
+
 ## Run locally
 
 ```bash
