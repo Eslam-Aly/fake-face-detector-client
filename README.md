@@ -17,6 +17,7 @@ By default, the app calls `/api/predict`, and Vite proxies `/api/*` to `http://l
 - `VITE_API_PROXY_TARGET`: backend URL for local development proxy (default `http://localhost:8000`)
 - `VITE_API_BASE_URL`: optional absolute base URL for direct API calls (useful in production)
 - `VITE_API_PREDICT_PATH`: path or absolute URL for prediction endpoint (default `/api/predict`)
+- `VITE_WEB3FORMS_ACCESS_KEY`: Web3Forms public access key for contact form submission
 
 ## Guess game dataset
 
@@ -41,6 +42,7 @@ Set these env vars in Vercel Project Settings:
 
 - `VITE_API_BASE_URL=https://eslamaly-fake-face-detector-api.hf.space`
 - `VITE_API_PREDICT_PATH=/predict`
+- `VITE_WEB3FORMS_ACCESS_KEY=<your_web3forms_access_key>`
 
 ## API contract expected by client
 

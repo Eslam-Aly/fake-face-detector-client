@@ -3,19 +3,61 @@ import { FiMail, FiPhone, FiGlobe, FiLinkedin } from "react-icons/fi";
 
 type FormState = "idle" | "sending" | "sent" | "error";
 
+const web3FormsAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
 function Contact() {
   const [state, setState] = useState<FormState>("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!web3FormsAccessKey) {
+      setState("error");
+      setErrorMessage(
+        "Contact form is not configured. Missing VITE_WEB3FORMS_ACCESS_KEY.",
+      );
+      return;
+    }
+
     setState("sending");
+    setErrorMessage("");
 
-    // TODO: wire this to Web3Forms / your backend
-    await new Promise((r) => setTimeout(r, 900));
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-    // Demo success for now
-    setState("sent");
-    e.currentTarget.reset();
+    formData.append("access_key", web3FormsAccessKey);
+    formData.append("from_name", "Fake Face Detector Contact Form");
+    formData.append(
+      "subject",
+      String(formData.get("subject") || "New contact form message"),
+    );
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const payload = (await response.json().catch(() => null)) as {
+        success?: boolean;
+        message?: string;
+      } | null;
+
+      if (!response.ok || !payload?.success) {
+        throw new Error(payload?.message || "Failed to send message.");
+      }
+
+      setState("sent");
+      form.reset();
+    } catch (error) {
+      setState("error");
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
+    }
   };
 
   return (
@@ -91,6 +133,14 @@ function Contact() {
             </h3>
 
             <form onSubmit={onSubmit} className="space-y-4">
+              <input
+                type="checkbox"
+                name="botcheck"
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-2">
                   <label
@@ -184,13 +234,11 @@ function Contact() {
               </button>
 
               {state === "sent" && (
-                <p className="text-sm text-green-700">
-                  Message sent ✅ (demo). Hook it to Web3Forms to make it real.
-                </p>
+                <p className="text-sm text-green-700">Message sent ✅</p>
               )}
               {state === "error" && (
                 <p className="text-sm text-red-700">
-                  Something went wrong. Please try again.
+                  {errorMessage || "Something went wrong. Please try again."}
                 </p>
               )}
             </form>
