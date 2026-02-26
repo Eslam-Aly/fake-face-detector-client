@@ -56,7 +56,7 @@ function Footer() {
               GitHub (Client)
             </a>
             <a
-              href="https://github.com/Eslam-Aly/fake-face-detection.git"
+              href="https://github.com/Eslam-Aly/fake-face-detector-api.git"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-blue-600"
